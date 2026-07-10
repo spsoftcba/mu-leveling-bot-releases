@@ -3,209 +3,953 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SpSoftCba — Software & Bots</title>
-<meta name="description" content="Software, automatización, bots e IA.">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<title>MU Leveling Bot — Automatizá tu progreso</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0D0D0D;--bg2:#141414;--card:#181818;--accent:#3B82F6;--text:#F0F0F0;--muted:#888;--border:#252525}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;background:var(--bg)}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.05em;color:var(--accent)}
-.nav-links{display:flex;gap:2rem}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.hero{padding:6rem 3rem 5rem;max-width:900px}
-.hero-tag{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-family:'Space Grotesk',sans-serif}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem}
-.hero h1 span{color:var(--accent)}
-.hero p{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:520px;margin-bottom:2rem}
-.hero-stats{display:flex;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.hero-stat{display:flex;flex-direction:column;gap:.2rem}
-.hero-stat-val{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text)}
-.hero-stat-val span{color:var(--accent)}
-.hero-stat-label{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.hero-actions{display:flex;gap:1rem;align-items:center}
-.btn-primary{background:var(--accent);color:#0D0D0D;padding:.75rem 1.75rem;border-radius:4px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.02em;transition:opacity .2s;display:inline-block}
-.btn-primary:hover{opacity:.85}
-.btn-ghost{color:var(--muted);font-size:.85rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:color .2s}
-.btn-ghost:hover{color:var(--text)}
-.btn-ghost::after{content:'→'}
-.section{padding:5rem 3rem}
-.section-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-family:'Space Grotesk',sans-serif;margin-bottom:3rem;display:flex;align-items:center;gap:1rem}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.projects{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.project-card{background:var(--card);padding:2.5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;transition:background .2s}
-.project-card:hover{background:#1e1e1e}
-.project-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.project-num{font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--accent);letter-spacing:.1em}
-.project-badge{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .75rem;border:1px solid var(--border);border-radius:2px;color:var(--muted)}
-.project-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}
-.project-card p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1.75rem}
-.project-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.project-link{color:var(--accent);font-size:.8rem;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;font-family:'Space Grotesk',sans-serif;transition:opacity .2s}
-.project-link:hover{opacity:.7}
-.project-link::after{content:' ↗'}
-.stats-panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:1.25rem}
-.stat-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border)}
-.stat-row:last-child{border-bottom:none}
-.stat-label{font-size:.75rem;color:var(--muted);letter-spacing:.05em;font-family:'Space Grotesk',sans-serif;text-transform:uppercase}
-.stat-val{font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:500;color:var(--text)}
-.stat-val.accent{color:var(--accent)}
-.stat-val a{color:var(--accent);text-decoration:none;font-size:.8rem}
-.stat-val a:hover{opacity:.7}
-.services-section{padding:5rem 3rem;border-top:1px solid var(--border)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.service-item{background:var(--card);padding:2rem;transition:background .2s}
-.service-item:hover{background:#1e1e1e}
-.service-icon{font-size:1.4rem;margin-bottom:1rem}
-.service-item h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.01em}
-.service-item p{color:var(--muted);font-size:.85rem;line-height:1.6}
-.contact-section{padding:5rem 3rem;border-top:1px solid var(--border)}
-.contact-inner{max-width:600px}
-.contact-inner h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:.75rem}
-.contact-inner p{color:var(--muted);margin-bottom:2rem;line-height:1.7}
-.contact-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.contact-link{color:var(--text);text-decoration:none;font-size:.85rem;border-bottom:1px solid var(--border);padding-bottom:2px;transition:border-color .2s,color .2s}
-.contact-link:hover{border-color:var(--accent);color:var(--accent)}
-.footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.footer span{font-size:.75rem;color:var(--muted)}
-@media(max-width:700px){
-  .nav,.section,.services-section,.contact-section{padding-left:1.5rem;padding-right:1.5rem}
-  .hero{padding:4rem 1.5rem 3rem}
-  .project-card{grid-template-columns:1fr;padding:2rem 1.5rem;gap:1.5rem}
-  .services-grid{grid-template-columns:1fr}
-  .footer{padding:1.5rem;flex-direction:column;gap:.5rem;text-align:center}
-}
+  :root {
+    --bg:       #050a14;
+    --bg2:      #080f1e;
+    --panel:    #0a1628;
+    --border:   #1a3a6a;
+    --accent:   #00d4ff;
+    --accent2:  #52b788;
+    --accent3:  #f4a261;
+    --text:     #c8d6e5;
+    --text2:    #5a7a9a;
+    --danger:   #e07070;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(5,10,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--accent2); }
+
+  nav a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 32px; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    z-index: 1;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* Glow orb */
+  .hero-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    animation: fadeDown 0.6s 0.1s ease both;
+  }
+
+  .hero-title .line1 { color: #fff; display: block; }
+  .hero-title .line2 {
+    display: block;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    max-width: 540px;
+    color: var(--text2);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 48px;
+    animation: fadeDown 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeDown 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #050a14;
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,212,255,0.3);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--text);
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .hero-version {
+    margin-top: 48px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+    animation: fadeDown 0.6s 0.4s ease both;
+  }
+
+  /* ── STATS ── */
+  .stats-bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  .stat-item {
+    flex: 1;
+    max-width: 220px;
+    padding: 32px 24px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(0,212,255,0.04); }
+
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    color: var(--text2);
+    font-size: 17px;
+    max-width: 560px;
+    margin-bottom: 60px;
+  }
+
+  /* ── FEATURES GRID ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .feature-card {
+    background: var(--panel);
+    padding: 36px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .feature-card:hover { background: #0d1f3a; }
+  .feature-card:hover::before { transform: scaleX(1); }
+
+  .feature-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    color: var(--text2);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 28px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+  }
+
+  .step {
+    display: flex;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(26,58,106,0.4);
+    transition: all 0.2s;
+  }
+
+  .step:last-child { border-bottom: none; }
+  .step:hover .step-content { transform: translateX(4px); }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(0,212,255,0.06);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-content { transition: transform 0.2s; }
+
+  .step-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .step-desc { color: var(--text2); font-size: 15px; }
+
+  /* ── DOCS GRID ── */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .doc-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    cursor: default;
+    transition: all 0.2s;
+  }
+
+  .doc-card:hover {
+    border-color: rgba(0,212,255,0.3);
+    background: #0d1f3a;
+    transform: translateY(-3px);
+  }
+
+  .doc-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .doc-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .doc-desc { color: var(--text2); font-size: 14px; line-height: 1.6; }
+
+  /* ── CTA ── */
+  .cta-section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(82,183,136,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .cta-sub {
+    color: var(--text2);
+    font-size: 18px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text2);
+    letter-spacing: 2px;
+  }
+
+  .footer-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text2);
+    opacity: 0.5;
+  }
+
+  /* ── TABLE ── */
+  .config-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 32px 0;
+  }
+
+  .config-table th {
+    background: rgba(0,212,255,0.06);
+    color: var(--accent);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .config-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(26,58,106,0.3);
+    color: var(--text2);
+    vertical-align: top;
+  }
+
+  .config-table td:first-child {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    white-space: nowrap;
+  }
+
+  .config-table tr:hover td { background: rgba(0,212,255,0.02); }
+
+  /* ── KEY BADGE ── */
+  kbd {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HIGHLIGHT ── */
+  .hl-accent  { color: var(--accent); }
+  .hl-green   { color: var(--accent2); }
+  .hl-orange  { color: var(--accent3); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    footer { flex-direction: column; text-align: center; }
+  }
 </style>
 </head>
 <body>
-<nav class="nav">
-  <span class="logo">SpSoftCba</span>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MU <span>Leveling</span> Bot</div>
   <div class="nav-links">
-    <a href="#proyectos">Proyectos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#features">Features</a>
+    <a href="#howto">Cómo usar</a>
+    <a href="#docs">Docs</a>
+    <a href="#download">Descargar</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-tag">Software · Automatización · Bots · IA</div>
-  <h1>Herramientas que<br><span>hacen el trabajo</span><br>por vos.</h1>
-  <p>Desarrollamos software de automatización, bots e inteligencia artificial. Productos listos para usar, sin complicaciones.</p>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <span class="hero-stat-val"><span>10</span>+ años</span>
-      <span class="hero-stat-label">de experiencia</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-val">Soporte <span>activo</span></span>
-      <span class="hero-stat-label">post entrega</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-val">MVPs <span>rápidos</span></span>
-      <span class="hero-stat-label">de la idea al producto</span>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    v1.1.5 — Actualización automática activa
   </div>
+  <h1 class="hero-title">
+    <span class="line1">Automatizá tu</span>
+    <span class="line2">Leveling en MU</span>
+  </h1>
+  <p class="hero-sub">
+    Bot de leveling para MU Online con soporte multi-ventana, detección OCR de nivel, cambio automático de zonas y actualización automática.
+  </p>
   <div class="hero-actions">
-    <a href="#proyectos" class="btn-primary">Ver proyectos</a>
-    <a href="#contacto" class="btn-ghost">Contacto</a>
+    <a href="#download" class="btn-primary">
+      ↓ Descargar Bot
+    </a>
+    <a href="#howto" class="btn-secondary">
+      Ver cómo funciona
+    </a>
+  </div>
+  <div class="hero-version">
+    Versión actual: <span class="hl-accent">v1.1.5</span> &nbsp;·&nbsp; Requiere licencia de activación
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">Multi</span>
+    <span class="stat-label">Ventanas simultáneas</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">OCR</span>
+    <span class="stat-label">Detección de nivel</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">Auto</span>
+    <span class="stat-label">Cambio de zonas</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">RGB</span>
+    <span class="stat-label">Detección de helper</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label">// features</div>
+  <h2 class="section-title">Todo lo que necesitás<br>para levelear sin parar</h2>
+  <p class="section-sub">Cada función fue diseñada para que el bot funcione de forma autónoma, robusta y configurable.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🖥️</span>
+      <div class="feature-title">Multi-ventana</div>
+      <p class="feature-desc">Manejá múltiples personajes al mismo tiempo, cada uno con su propia configuración independiente.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔍</span>
+      <div class="feature-title">Detección de nivel</div>
+      <p class="feature-desc">El bot detecta el nivel del personaje en tiempo real y toma decisiones automáticamente.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🗺️</span>
+      <div class="feature-title">Cambio automático de zonas</div>
+      <p class="feature-desc">Cambia de zona automáticamente según el nivel del personaje, sin intervención manual.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">❤️</span>
+      <div class="feature-title">Recuperación automática</div>
+      <p class="feature-desc">Detecta cuando el personaje se detiene o muere y lo reubica automáticamente en su zona de leveling.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📊</span>
+      <div class="feature-title">Estadísticas en tiempo real</div>
+      <p class="feature-desc">Seguí el progreso de cada personaje con estadísticas de nivel, resets y actividad.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔄</span>
+      <div class="feature-title">Actualizaciones</div>
+      <p class="feature-desc">El bot avisa cuando hay una versión nueva disponible. Actualizás cuando vos querés, con un solo click.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">⏺️</span>
+      <div class="feature-title">Configuración visual</div>
+      <p class="feature-desc">Configurá los recorridos de cada zona de forma visual, directamente desde el juego.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📷</span>
+      <div class="feature-title">Setup automático</div>
+      <p class="feature-desc">El bot se prepara solo al iniciar, asegurando condiciones óptimas para cada sesión.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔑</span>
+      <div class="feature-title">Sistema de licencias</div>
+      <p class="feature-desc">Activación segura por clave con fecha de vencimiento. Trial gratuito de 3 días disponible.</p>
+    </div>
   </div>
 </section>
 
-<section class="section" id="proyectos">
-  <div class="section-label">Proyectos</div>
-  <div class="projects">
+<div class="divider"></div>
 
-    <div class="project-card">
-      <div>
-        <div class="project-meta"><span class="project-num">01</span><span class="project-badge">Windows · Bot</span></div>
-        <h2>MU Online<br>Leveling Bot</h2>
-        <p>Bot de leveleo automático para MU Online. Detecta el juego en pantalla, controla el personaje y levela solo. Funciona en background.</p>
-        <div class="project-links">
-          <a href="https://spsoftcba.github.io/mulevelingbot-landing/" class="project-link" target="_blank">Más info</a>
+<!-- HOW IT WORKS -->
+<section id="howto">
+  <div class="section-label">// primeros pasos</div>
+  <h2 class="section-title">Cómo empezar</h2>
+  <p class="section-sub">Configurar el bot lleva unos minutos. Seguí estos pasos en orden.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <div class="step-title">Descargá e instalá</div>
+        <p class="step-desc">Descargá el zip, descomprimí en cualquier carpeta y ejecutá el bot. No requiere instalación.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <div class="step-title">Activá tu licencia</div>
+        <p class="step-desc">Al abrir por primera vez ingresás tu clave de activación. El bot la recuerda para las próximas sesiones.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <div class="step-title">Seleccioná tu personaje</div>
+        <p class="step-desc">Abrí el juego, refrescá la lista de ventanas y seleccioná el personaje que querés configurar.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <div class="step-title">Configurá las zonas</div>
+        <p class="step-desc">Definí las zonas de leveling para cada rango de nivel y configurá los recorridos desde el juego.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-content">
+        <div class="step-title">Ejecutá el bot</div>
+        <p class="step-desc">Presioná Ejecutar, seleccioná los personajes y listo. El bot se encarga del resto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DOCS / CONFIG -->
+<section id="docs">
+  <div class="section-label">// documentación</div>
+  <h2 class="section-title">Configuración detallada</h2>
+  <p class="section-sub">Todo lo que necesitás saber para sacar el máximo del bot.</p>
+
+  <div class="docs-grid">
+    <div class="doc-card">
+      <span class="doc-tag">Configuración</span>
+      <div class="doc-title">Todo en un lugar</div>
+      <p class="doc-desc">Teclas, tiempos de respuesta y preferencias globales configurables desde la interfaz, sin editar archivos.</p>
+    </div>
+    <div class="doc-card">
+      <span class="doc-tag">Zonas</span>
+      <div class="doc-title">Flexible y personalizable</div>
+      <p class="doc-desc">Definí tantas zonas como necesites para cada rango de nivel. El bot las administra automáticamente.</p>
+    </div>
+    <div class="doc-card">
+      <span class="doc-tag">Perfiles</span>
+      <div class="doc-title">Un perfil por personaje</div>
+      <p class="doc-desc">Cada personaje tiene su configuración independiente. Podés crear plantillas y aplicarlas a personajes nuevos en segundos.</p>
+    </div>
+    <div class="doc-card">
+      <span class="doc-tag">Multi-cuenta</span>
+      <div class="doc-title">Sin límite de cuentas</div>
+      <p class="doc-desc">Corrés todas las cuentas que necesites al mismo tiempo, cada una con su configuración propia.</p>
+    </div>
+    <div class="doc-card">
+      <span class="doc-tag">Configuración visual</span>
+      <div class="doc-title">Setup directo desde el juego</div>
+      <p class="doc-desc">Configurá los recorridos de cada zona directamente en el juego. Sin coordenadas manuales.</p>
+    </div>
+    <div class="doc-card">
+      <span class="doc-tag">Portabilidad</span>
+      <div class="doc-title">Exportar e importar</div>
+      <p class="doc-desc">Guardá y compartí configuraciones entre instalaciones con un solo click.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / DOWNLOAD -->
+<div class="cta-section" id="download">
+  <h2 class="cta-title">Listo para empezar</h2>
+  <p class="cta-sub">Descargá la última versión y contactanos para obtener tu clave de activación.</p>
+  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1">
+    <a href="https://www.mediafire.com/file/mjrfts8i9h5irpj/MULevelingBotMultiMain_v115.zip/file" class="btn-primary" target="_blank">
+      ↓ Descargar v1.1.5
+    </a>
+  </div>
+  <p style="margin-top:24px; font-family:'Share Tech Mono',monospace; font-size:12px; color:var(--text2); position:relative; z-index:1">
+    Windows 10/11 · 64-bit · ~103 MB descomprimido
+  </p>
+
+  <!-- Botones licencia -->
+  <div style="position:relative; z-index:1; margin-top:40px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+    <button onclick="abrirTrial()" class="btn-secondary" style="font-size:13px;">
+      🎁 Obtener licencia gratuita
+    </button>
+    <button onclick="solicitarLicencia()" class="btn-primary" style="font-size:13px;">
+      ✉ Solicitar licencia
+    </button>
+  </div>
+
+  <!-- Modal Trial -->
+  <div id="modal-trial" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:999; align-items:center; justify-content:center;">
+    <div style="background:#0a1628; border:1px solid #1a3a6a; border-radius:6px; padding:40px; max-width:400px; width:90%; text-align:center; position:relative;">
+      <button onclick="cerrarModal('modal-trial')" style="position:absolute; top:12px; right:16px; background:none; border:none; color:#5a7a9a; font-size:20px; cursor:pointer;">×</button>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:11px; color:#f4a261; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px;">Prueba gratuita — 7 días</div>
+      <p style="color:#5a7a9a; font-size:15px; margin-bottom:24px; line-height:1.6;">Usá esta clave para activar el bot.<br>Válida por 7 días con todas las funciones.</p>
+      <div onclick="copiarKey()" title="Click para copiar" style="background:#050a14; border:1px solid rgba(244,162,97,0.3); border-radius:4px; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; cursor:pointer;">
+        <span id="trial-key" style="font-family:'Share Tech Mono',monospace; font-size:18px; color:#f4a261; letter-spacing:3px;">MU-TRIAL-1111-1111</span>
+        <span id="copy-icon" style="font-size:16px; color:#5a7a9a;">📋</span>
+      </div>
+      <p id="copy-msg" style="font-family:'Share Tech Mono',monospace; font-size:11px; color:#52b788; margin-top:10px; opacity:0; transition:opacity 0.3s;">¡Copiado al portapapeles!</p>
+    </div>
+  </div>
+
+  <!-- Modal Solicitar Licencia -->
+  <div id="modal-licencia" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:999; align-items:center; justify-content:center;">
+    <div style="background:#0a1628; border:1px solid #1a3a6a; border-radius:6px; padding:40px; max-width:420px; width:90%; text-align:left; position:relative;">
+      <button onclick="cerrarModal('modal-licencia')" style="position:absolute; top:12px; right:16px; background:none; border:none; color:#5a7a9a; font-size:20px; cursor:pointer;">×</button>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:11px; color:#52b788; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px;">Solicitar licencia</div>
+      <div id="form-licencia">
+        <div style="margin-bottom:16px;">
+          <label style="font-size:13px; color:#5a7a9a; display:block; margin-bottom:6px;">Nombre</label>
+          <input id="lic-nombre" type="text" placeholder="Tu nombre" style="width:100%; background:#050a14; border:1px solid #1a3a6a; border-radius:4px; padding:10px 14px; color:#e0e0ff; font-family:'Rajdhani',sans-serif; font-size:15px; outline:none;">
         </div>
-      </div>
-      <div class="stats-panel">
-        <div class="stat-row"><span class="stat-label">Plataforma</span><span class="stat-val">Windows</span></div>
-        <div class="stat-row"><span class="stat-label">Descarga</span><span class="stat-val"><a href="https://spsoftcba.github.io/mulevelingbot-landing/" target="_blank">Ver landing ↗</a></span></div>
-        <div class="stat-row"><span class="stat-label">Licencia</span><span class="stat-val">De pago · con vencimiento</span></div>
-        <div class="stat-row"><span class="stat-label">Estado</span><span class="stat-val accent">● Disponible</span></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div>
-        <div class="project-meta"><span class="project-num">02</span><span class="project-badge">Windows · Bot</span></div>
-        <h2>Twitch Raffle<br>Monitor</h2>
-        <p>Monitor de rifas para Twitch. Detecta sorteos en el chat y anota al usuario automáticamente en tiempo real. Multi-canal.</p>
-        <div class="project-links">
-          <a href="https://spsoftcba.github.io/twitchrafflemonitor/" class="project-link" target="_blank">Más info</a>
+        <div style="margin-bottom:24px;">
+          <label style="font-size:13px; color:#5a7a9a; display:block; margin-bottom:6px;">Email</label>
+          <input id="lic-email" type="email" placeholder="tu@email.com" style="width:100%; background:#050a14; border:1px solid #1a3a6a; border-radius:4px; padding:10px 14px; color:#e0e0ff; font-family:'Rajdhani',sans-serif; font-size:15px; outline:none;">
         </div>
+        <p id="lic-error" style="font-size:13px; color:#e07070; margin-bottom:12px; display:none;">Completá todos los campos.</p>
+        <button onclick="enviarLicencia()" class="btn-primary" style="width:100%; justify-content:center; font-size:13px;">Enviar solicitud</button>
       </div>
-      <div class="stats-panel">
-        <div class="stat-row"><span class="stat-label">Plataforma</span><span class="stat-val">Windows</span></div>
-        <div class="stat-row"><span class="stat-label">Descarga</span><span class="stat-val"><a href="https://spsoftcba.github.io/twitchrafflemonitor/" target="_blank">Ver landing ↗</a></span></div>
-        <div class="stat-row"><span class="stat-label">Licencia</span><span class="stat-val">De pago · trial 24 hs</span></div>
-        <div class="stat-row"><span class="stat-label">Estado</span><span class="stat-val accent">● Disponible</span></div>
+      <div id="lic-enviado" style="display:none; text-align:center;">
+        <div style="font-size:40px; margin-bottom:16px;">✅</div>
+        <div style="font-family:'Orbitron',monospace; font-size:16px; font-weight:700; color:#fff; margin-bottom:12px;">Solicitud enviada</div>
+        <p style="color:#5a7a9a; font-size:15px; line-height:1.6;">Te contactaremos a la brevedad con tu clave de activación.</p>
       </div>
-    </div>
-
-    <div class="project-card">
-      <div>
-        <div class="project-meta"><span class="project-num">03</span><span class="project-badge">Android · Web</span></div>
-        <h2>MiAutoRacing</h2>
-        <p>App de gestión para talleres mecánicos. Control de órdenes de trabajo, clientes, repuestos y facturación. Disponible en Android y desde el navegador.</p>
-        <div class="project-links">
-          <a href="https://miautoracing.com" class="project-link" target="_blank">Ir al sitio</a>
-        </div>
-      </div>
-      <div class="stats-panel">
-        <div class="stat-row"><span class="stat-label">Plataforma</span><span class="stat-val">Android · Web</span></div>
-        <div class="stat-row"><span class="stat-label">Descarga</span><span class="stat-val"><a href="https://miautoracing.com" target="_blank">miautoracing.com</a></span></div>
-        <div class="stat-row"><span class="stat-label">Licencia</span><span class="stat-val">Gratuita</span></div>
-        <div class="stat-row"><span class="stat-label">Estado</span><span class="stat-val accent">● Disponible</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="services-section" id="servicios">
-  <div class="section-label">Servicios</div>
-  <div class="services-grid">
-    <div class="service-item">
-      <div class="service-icon">⚙️</div>
-      <h3>Automatización a medida</h3>
-      <p>Bots y scripts para automatizar tareas repetitivas, scraping, integraciones entre sistemas y flujos de trabajo.</p>
-    </div>
-    <div class="service-item">
-      <div class="service-icon">🌐</div>
-      <h3>Desarrollo web</h3>
-      <p>Sitios y aplicaciones web a medida. Desde landings simples hasta sistemas con backend, base de datos y panel de administración.</p>
-    </div>
-    <div class="service-item">
-      <div class="service-icon">🛠️</div>
-      <h3>Sistemas personalizados</h3>
-      <p>Software de escritorio, apps móviles y sistemas de gestión adaptados a las necesidades específicas de tu negocio.</p>
     </div>
   </div>
-</section>
 
-<section class="contact-section" id="contacto">
-  <div class="contact-inner">
-    <h2>¿Querés usar<br>algún producto?</h2>
-    <p>Escribinos por mail o Discord para conseguir una clave de prueba, comprar una licencia, o consultar por un desarrollo a medida.</p>
-    <div class="contact-links">
-      <a href="mailto:spsoft.adm@gmail.com" class="contact-link">spsoft.adm@gmail.com</a>
-      <a href="https://discord.gg/fnd8CD2mg5" class="contact-link" target="_blank">Discord</a>
-    </div>
-  </div>
-</section>
+  <script>
+    function abrirTrial() {
+      document.getElementById('modal-trial').style.display = 'flex';
+    }
+    function cerrarModal(id) {
+      document.getElementById(id).style.display = 'none';
+      if (id === 'modal-licencia') {
+        document.getElementById('form-licencia').style.display = 'block';
+        document.getElementById('lic-enviado').style.display = 'none';
+        document.getElementById('lic-nombre').value = '';
+        document.getElementById('lic-email').value = '';
+      }
+    }
+    function solicitarLicencia() {
+      document.getElementById('modal-licencia').style.display = 'flex';
+    }
+    async function enviarLicencia() {
+      const nombre = document.getElementById('lic-nombre').value.trim();
+      const email  = document.getElementById('lic-email').value.trim();
+      if (!nombre || !email) {
+        document.getElementById('lic-error').style.display = 'block';
+        return;
+      }
+      document.getElementById('lic-error').style.display = 'none';
+      const btn = document.querySelector('#form-licencia .btn-primary');
+      btn.innerText = 'Enviando...';
+      btn.disabled = true;
+      try {
+        const resp = await fetch('https://formspree.io/f/xpqewewb', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            nombre: nombre,
+            email: email,
+            message: `Solicitud de licencia MU Leveling Bot\n\nNombre: ${nombre}\nEmail: ${email}`
+          })
+        });
+        if (resp.ok) {
+          document.getElementById('form-licencia').style.display = 'none';
+          document.getElementById('lic-enviado').style.display = 'block';
+        } else {
+          document.getElementById('lic-error').innerText = 'Error al enviar. Intentá de nuevo.';
+          document.getElementById('lic-error').style.display = 'block';
+          btn.innerText = 'Enviar solicitud';
+          btn.disabled = false;
+        }
+      } catch(e) {
+        document.getElementById('lic-error').innerText = 'Error de conexión. Intentá de nuevo.';
+        document.getElementById('lic-error').style.display = 'block';
+        btn.innerText = 'Enviar solicitud';
+        btn.disabled = false;
+      }
+    }
+    function copiarKey() {
+      const key = document.getElementById('trial-key').innerText;
+      navigator.clipboard.writeText(key).then(() => {
+        document.getElementById('copy-icon').innerText = '✓';
+        const msg = document.getElementById('copy-msg');
+        msg.style.opacity = '1';
+        setTimeout(() => {
+          msg.style.opacity = '0';
+          document.getElementById('copy-icon').innerText = '📋';
+        }, 2500);
+      });
+    }
+    ['modal-trial','modal-licencia'].forEach(id => {
+      document.getElementById(id).addEventListener('click', function(e) {
+        if (e.target === this) cerrarModal(id);
+      });
+    });
+  </script>
+</div>
 
-<footer class="footer">
-  <span>SpSoftCba · Argentina</span>
-  <span>spsoftcba.github.io</span>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MU LEVELING BOT — v1.5</div>
+  <div class="footer-note">Solo para uso personal · Requiere licencia</div>
 </footer>
+
 </body>
 </html>
